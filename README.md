@@ -1,5 +1,5 @@
-My first README file. As usual no one will read this.
+My first README file.
 
-Adding a second linel. This is completely a develop branch.
-
-Adding a new feature!
+This website helps setup your album and songs.
+ An album can contain any number of songs.
+ The website is not yet completed.
