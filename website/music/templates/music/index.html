@@ -1,0 +1,64 @@
+{% extends 'music/base.html' %}
+{% block title %} Album Details {% endblock %}
+{% block body %}
+
+  <!-- <div class="row">
+    <div class="col-md-4"><img src="\static\music\images\Desert.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+  </div>
+
+    <div class="col-md-4">
+  <img src="\static\music\images\Desert.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+    </div> -->
+      <div class="row">
+    {% for album in album_list %}
+
+        <div class="col-md-4">
+          <img src="{{album.album_logo.url}}" class="img-thumbnail" width="304" height="236">
+
+            <br><h5 ><b>&nbsp;&nbsp;&nbsp;{{ album.album_title}} - {{ album.artist }}</b></h5>
+            <div class="btn">
+              <a href="{% url 'music:album-update' album.id %}" class="btn btn-primary">View Details</a>
+             <form method="POST" action="{% url 'music:album-delete' album.id %}">
+               {% csrf_token %}<input type="submit" value="DELETE">
+            </form>﻿
+
+            </div>
+
+
+
+        </div>
+
+        {% if error_message %}
+          <p><strong>{{error_message}}</strong></p>
+        {% endif %}
+
+    {% endfor %}
+      </div>
+
+
+
+
+  <!-- {% for album in album_list %}
+      <h5 class="col-md-4"><b>{{ album.album_title}} - {{ album.artist }}</b></h5>
+
+
+      {% if error_message %}
+        <p><strong>{{error_message}}</p></strong>
+      {% endif %}
+  {% endfor %}
+</div> -->
+
+<!-- {% if object_list %}
+    <h2 > These are my albums </h2>
+    <ul>
+      {% for album in album_list %}
+      <li> <a href= "{% url 'music:details' album.id %}"> {{album.album_title}} </a> </li>
+      {% endfor %}
+    </ul>
+
+{% else %}
+  <h2> There are no albums present </h2>
+
+{% endif %} -->
+
+{% endblock %}
